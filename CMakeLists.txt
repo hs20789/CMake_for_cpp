@@ -3,6 +3,12 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
+# c++ 버전의 기본값을 c++23 으로 설정
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+
 # 지원되는 경우 MSVC 컴파일러에 대해 핫 다시 로드 사용하도록 설정합니다.
 if (POLICY CMP0141)
   cmake_policy(SET CMP0141 NEW)
@@ -13,3 +19,4 @@ project ("CMake_for_cpp")
 
 # 하위 프로젝트를 포함합니다.
 add_subdirectory ("Project1")
+add_subdirectory ("Project2")
