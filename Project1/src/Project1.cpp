@@ -1,7 +1,8 @@
 ﻿#include <iostream>
 
-int main () {
-    // 표준 __cplusplus: 모든 컴파일러에서 표준값. 단, Visual Studio는 옵션에 따라 199711L만 반환될 수 있음.
+int main() {
+    // 표준 __cplusplus: 모든 컴파일러에서 표준값. 단, Visual Studio는 옵션에
+    // 따라 199711L만 반환될 수 있음.
     std::cout << "__cplusplus: " << __cplusplus << std::endl;
 
 #ifdef _MSVC_LANG
