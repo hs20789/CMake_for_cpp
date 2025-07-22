@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 ## pro1의 실행 파일 생성
 add_executable (pro1 "src/Project1.cpp" "include/Project1.h")
 ## p1d1의 실행 파일 생성
-add_executable (p1d1 "src/p1d1.cpp" "include/namespace.h" "modules/employee.ixx")
+add_executable (p1d1 "src/p1d1.cpp" "include/namespace.h")
 ## chap2의 실행 파일 생성
 add_executable (chap2 "src/chap2.cpp")
 
