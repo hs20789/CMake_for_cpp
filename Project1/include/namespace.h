@@ -1,3 +1,3 @@
 namespace header_namespace {
-void f();
+	void f();
 }  // namespace header_namespace
