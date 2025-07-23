@@ -4,16 +4,40 @@
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    add_compile_options(-fmodules-ts)
+    set(CMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API "2182bf5c-ef0d-489a-91da-49dbc3090d2a")
+    set(CMAKE_EXPERIMENTAL_CXX_MODULE_DYNDEP ON)
+endif()
+
 # 이 프로젝트의 실행 파일에 소스를 추가합니다.
 ## pro1의 실행 파일 생성
 add_executable (pro1 "src/Project1.cpp" "include/Project1.h")
-## p1d1의 실행 파일 생성
-add_executable (p1d1 "src/p1d1.cpp" "include/namespace.h")
+
+# p1d1 실행 파일 (모듈 미포함 소스로 우선 정의)
+if(MSVC)
+    add_executable(p1d1 "src/p1d1_msvc.cpp" "include/namespace.h" "employee.ixx")
+
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    add_executable(p1d1 "src/p1d1_gcc.cpp" "include/namespace.h")
+
+endif()
+
 ## chap2의 실행 파일 생성
-add_executable (chap2 "src/chap2.cpp")
+add_executable(chap2 "src/chap2.cpp")
+
 
 # TODO: 필요한 경우 테스트를 추가하고 대상을 설치합니다.
 
 # 헤더 파일 검색 경로를 지정합니다.
 target_include_directories(pro1 PUBLIC include)
 target_include_directories(p1d1 PUBLIC include)
+
+
+# if(MSVC)
+#      
+#    
+# elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+# 
+#
+#endif()

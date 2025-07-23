@@ -1,10 +1,8 @@
-export module employee;
-
-#include <string>   // <- import <string>; ´ë½Å »ç¿ë!
+ï»¿export module employee;
 
 export struct Employee {
-    std::string firstInitial;
-    std::string lastInitial;
+    char firstInitial;
+    char lastInitial;
     int employeeNumber;
     int salary;
 };

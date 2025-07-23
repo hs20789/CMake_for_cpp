@@ -1,10 +1,13 @@
-﻿#include "namespace.h"
+#include "namespace.h"
+#include <array>
 #include <compare>
 #include <cstddef>
+#include <initializer_list>
 #include <iostream>
 #include <limits>
 #include <optional>
 #include <utility>
+#include <vector>
 
 // import employee;
 
@@ -34,6 +37,13 @@ namespace global_namespace::inner_namespace::deep_namespace {
         std::cout << "No data to return.\n";
         return std::nullopt; // 값이 없는 경우
     }
+}
+
+[[nodiscard]] int makeSum(std::initializer_list<int> values) {
+    int total{};
+    for (int value : values)
+        total += value;
+    return total;
 }
 
 int main() {
@@ -129,7 +139,7 @@ int main() {
     }
 
     // // employee 모듈 사용
-    // Employee anEmployee{"Jeong", "HeonSu", 42, 80'000};
+    // Employee anEmployee{"J", "H", 42, 80'000};
     // std::cout << std::format("Employee: {} {}\n:"
     //                          "Number : {}\n"
     //                          "Salary : ${}\n",
@@ -159,7 +169,7 @@ int main() {
     };
     lambda_func();
 
-    nodiscard_func();
+    // nodiscard_func();
 
     int myArray[]{1, 2, 3, 4};
     std::cout << std::format("Array size: {}\n", std::size(myArray));
@@ -179,6 +189,21 @@ int main() {
                              *data1);
 
     std::cout << std::format("data2.value_or(0) = {}\n", data2.value_or(0));
+
+    // 구조적 바인딩
+    std::array<int, 4> arr{100, 200, 300, 4'100};
+    auto [arr_1, arr_2, arr_3, arr_4] = arr;
+    std::cout << std::format("{}, {}, {}, {}\n", arr_1, arr_2, arr_3, arr_4);
+    std::vector<int> test_vec{1, 2, 3, 4};
+
+    for (int i : arr)
+        std::cout << i;
+    std::cout << '\n';
+    for (std::vector<int> arr{9'900, 11'000, 50'000}; int i : arr)
+        std::cout << std::format("{}, ", i);
+    std::cout << '\n';
+
+    std::cout << std::format("sum of arr: {}\n", makeSum({1, 2, 3, 4}));
 
     return 0;
 }
