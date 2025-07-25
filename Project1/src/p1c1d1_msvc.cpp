@@ -9,11 +9,7 @@
 #include <utility>
 #include <vector>
 
-#if defined(_MSC_VER)
-import employee;
-#else
-// GCC/Clang은 #include 기반(혹은 빈 줄)
-#endif
+import airline_ticket;
 
 // 중첩 네임 스페이스
 namespace global_namespace {
@@ -142,14 +138,6 @@ int main() {
         std::cout << "It's not a King piece!\n";
     }
 
-    // employee 모듈 사용
-    Employee anEmployee{"J", "H", 42, 80'000};
-    std::cout << std::format("Employee: {} {}\n:"
-                             "Number : {}\n"
-                             "Salary : ${}\n",
-                             anEmployee.firstInitial, anEmployee.lastInitial,
-                             anEmployee.employeeNumber, anEmployee.salary);
-
     // 3방향 비교 연산자
     int i{11};
     std::strong_ordering result{i <=> 0};
@@ -208,6 +196,16 @@ int main() {
     std::cout << '\n';
 
     std::cout << std::format("sum of arr: {}\n", makeSum({1, 2, 3, 4}));
+
+
+    AirlineTicket myTicket;
+    myTicket.setPassengerName("HeonSu Jeong");
+    myTicket.setNumberOfMiles(98'342'122);
+    double cost{myTicket.calculatePriceInDollars()};
+    std::string myName = myTicket.getPassengerName();
+    std::cout << std::format("This ticket for {}\nPrice: {:.3f}\n", myName, cost);
+
+
 
     return 0;
 }

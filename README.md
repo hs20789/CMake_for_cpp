@@ -1,9 +1,4 @@
-# C++ Practice 
+# CMake를 이용한 C++ 프로젝트입니다.
 
+---
 
-```
-#include <stdio.h>
-int main(){
-    return 0;
-}
-```
