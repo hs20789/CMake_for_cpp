@@ -8,7 +8,11 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 if(MSVC)
+<<<<<<< HEAD
   set(CMAKE_CXX_FLAGS "/utf-8")
+=======
+	set(CMAKE_CXX_FLAGS "/utf-8")
+>>>>>>> origin/main
 endif()
 
 # 지원되는 경우 MSVC 컴파일러에 대해 핫 다시 로드 사용하도록 설정합니다.
