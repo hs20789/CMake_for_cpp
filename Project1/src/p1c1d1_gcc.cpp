@@ -2,6 +2,7 @@
 #include <array>
 #include <compare>
 #include <cstddef>
+#include <format>
 #include <initializer_list>
 #include <iostream>
 #include <limits>
