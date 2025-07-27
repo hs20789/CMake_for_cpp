@@ -71,6 +71,59 @@ if(MSVC)
                         "modules/final/Employee.ixx")
 endif()
 
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+## 연습문제 
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+## 연습문제1: Employee 구조체를 HR이란 네임스페이스에 속하도록 수정
+if(MSVC)
+    add_executable(Prac1 "src/practice/prac1.cpp")
+    target_sources(Prac1 PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES 
+                         "modules/practice/employee_p1.ixx")
+endif()
+##############################################################################################################
+## 연습문제2: 연습문제1에 열거 타입 멤버 title 추가
+if(MSVC)
+    add_executable(Prac2 "src/practice/prac2.cpp")
+    target_sources(Prac2 PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES 
+                         "modules/practice/employee_p2.ixx")
+endif()
+##############################################################################################################
+## 연습문제3: 연습문제2에 + std::array 사용
+if(MSVC)
+    add_executable(Prac3 "src/practice/prac3.cpp")
+    target_sources(Prac3 PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES 
+                         "modules/practice/employee_p3.ixx")
+endif()
+##############################################################################################################
+## 연습문제4: 연습문제3에 + std::vector 사용
+if(MSVC)
+    add_executable(Prac4 "src/practice/prac4.cpp")
+    target_sources(Prac4 PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES 
+                         "modules/practice/employee_p4.ixx")
+endif()
+##############################################################################################################
+## 연습문제5: airline_ticket 모듈에 const 레퍼런스 사용
+if(MSVC)
+    add_executable(Prac5 "src/practice/prac5.cpp")
+    target_sources(Prac5 PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES 
+                         "modules/practice/airline_ticket_p5.ixx")
+endif()
+##############################################################################################################
+## 연습문제6: 연습문제5에 우수 회원 번호 옵션 추가
+if(MSVC)
+    add_executable(Prac6 "src/practice/prac6.cpp")
+    target_sources(Prac6 PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES 
+                         "modules/practice/airline_ticket_p6.ixx")
+endif()
+
+
 
 # TODO: 필요한 경우 테스트를 추가하고 대상을 설치합니다.
 
