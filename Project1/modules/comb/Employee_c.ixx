@@ -12,7 +12,8 @@ namespace Records {
     export int const DefaultRaiseAndDemeritAmount{1'000};
 
     // 직원 클래스
-    export class Employee {
+    export class Employee
+    {
         // 멤버 함수를 public으로 설정하여 외부에서 접근 가능하도록 함
         // 멤버 함수로 private 멤버 데이터에 접근할 수 있음
       public:
@@ -52,18 +53,19 @@ namespace Records {
 
 } // namespace Records
 
-
-
 namespace Records {
     Employee::Employee(std::string const &firstName,
                        std::string const &lastName)
-        : m_firstName{firstName}, m_lastName{lastName} {}
+        : m_firstName{firstName}, m_lastName{lastName}
+    {}
     // 승진
-    void Employee::promote(int raiseAmount) {
+    void Employee::promote(int raiseAmount)
+    {
         setSalary(getSalary() + raiseAmount);
     }
     // 좌천
-    void Employee::demote(int demeritAmount) {
+    void Employee::demote(int demeritAmount)
+    {
         setSalary(getSalary() - demeritAmount);
     }
     // 직원 채용
@@ -72,7 +74,8 @@ namespace Records {
     void Employee::fire() { m_hired = false; }
 
     // 직원 정보 출력
-    void Employee::display() const {
+    void Employee::display() const
+    {
         std::cout << std::format("Employee: {}, {}\n", getLastName(),
                                  getFirstName());
         std::cout << "---------------------------------------------------------"
@@ -82,25 +85,30 @@ namespace Records {
     }
 
     // 게터와 세터
-    void Employee::setFirstName(std::string const &fistName) {
+    void Employee::setFirstName(std::string const &fistName)
+    {
         m_firstName = fistName;
     }
     std::string const &Employee::getFirstName() const { return m_firstName; }
 
-    void Employee::setLastName(std::string const &lastName) {
+    void Employee::setLastName(std::string const &lastName)
+    {
         m_lastName = lastName;
     }
     std::string const &Employee::getLastName() const { return m_lastName; }
 
-    void Employee::setEmployeeNumber(int employeeNumber) {
+    void Employee::setEmployeeNumber(int employeeNumber)
+    {
         m_employeeNumber = employeeNumber;
     }
     int Employee::getEmployeeNumber() const { return m_employeeNumber; }
 
-    void Employee::setSalary(int salary) {
+    void Employee::setSalary(int salary)
+    {
         m_salary = salary < 0 ? 0 : salary; // 급여는 음수일 수 없음
     }
-    int Employee::getSalary() const {
+    int Employee::getSalary() const
+    {
         return m_salary; // 급여 반환
     }
 

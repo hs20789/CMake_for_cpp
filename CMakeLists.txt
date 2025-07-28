@@ -22,5 +22,4 @@ project ("CMake_for_cpp")
 # 하위 프로젝트를 포함합니다.
 add_subdirectory ("Project1")
 add_subdirectory ("Project2")
-add_subdirectory ("Project3")
 add_subdirectory ("Project4")
