@@ -1,0 +1,91 @@
+// #include <iostream>
+// #include <print>
+// #include <string>
+// #include <vector>
+
+// // 원본 스트링, 서브스트링, 대체스트링을 정의한 집합체
+// struct MyStr {
+//     std::string originStr;
+//     std::string findStr;
+//     std::string replaceStr;
+// };
+// // UI: 사용자로부터 원본 스트링과 그 안에서 찾을 서브스트링, 이를 대체할
+// // 서브스트링을 입력받는 함수
+// void inputStr(MyStr &myStr);
+// // 위의 세 스트링을 입력으로 받아서 검색 대상을 원하는 값으로 교체한 스트링을
+// // 리턴하는 함수
+// void replaceFunc(MyStr &myStr);
+
+// int main() {
+//     MyStr myStr{}; // 값 초기화
+
+//     inputStr(myStr);
+//     std::print("After Input:\nOriginal String: {}\n", myStr.originStr);
+
+//     replaceFunc(myStr);
+//     std::print("After Replacement:\nOriginal String: {}\n", myStr.originStr);
+// }
+
+// void inputStr(MyStr &myStr) {
+//     std::print("Enter Original String: ");
+//     getline(std::cin, myStr.originStr);
+
+//     std::print("Enter Find String: ");
+//     getline(std::cin, myStr.findStr);
+// }
+
+// void replaceFunc(MyStr &myStr) {
+//     std::string::size_type pos{};
+//     while (true) {
+//         pos = myStr.originStr.find(myStr.findStr);
+//         if (pos == std::string::npos)
+//             break;
+//         myStr.originStr.replace(pos, myStr.findStr.size(), myStr.replaceStr);
+//     }
+// }
+
+#include <iostream>
+#include <string>
+#include <string_view>
+
+// The parameters are const references to avoid unnecessary copying.
+std::string replace(std::string_view haystack, std::string_view needle,
+                    std::string_view replacement) {
+    // Make a copy of the haystack.
+    std::string result{haystack};
+
+    // Find all needles and replace them with the replacement string.
+    auto position{result.find(needle)};
+    while (position != std::string::npos) {
+        result.replace(position, needle.length(), replacement);
+        position = result.find(needle, position + needle.size());
+    }
+
+    return result;
+}
+
+int main() {
+    // Ask for the source string (= haystack).
+    std::string haystack;
+    std::cout << "Enter source string: ";
+    getline(std::cin, haystack);
+
+    // Ask for the string to find (= needle).
+    std::string needle;
+    std::cout << "Enter string to find: ";
+    getline(std::cin, needle);
+
+    // Ask for the replacement string.
+    std::string replacement;
+    std::cout << "Enter replacement string: ";
+    getline(std::cin, replacement);
+
+    // Call the replace function.
+    std::string result{replace(haystack, needle, replacement)};
+
+    // Print out all the strings for verification.
+    std::cout << "Haystack: " << haystack << std::endl;
+    std::cout << "Needle: " << needle << std::endl;
+    std::cout << "Replacment: " << replacement << std::endl;
+    std::cout << "Result: " << result << std::endl;
+}
