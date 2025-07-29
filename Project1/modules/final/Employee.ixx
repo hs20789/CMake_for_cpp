@@ -11,7 +11,8 @@ namespace Records {
     export int const DefaultRaiseAndDemeritAmount{1'000};
 
     // 직원 클래스
-    export class Employee {
+    export class Employee
+    {
         // 멤버 함수를 public으로 설정하여 외부에서 접근 가능하도록 함
         // 멤버 함수로 private 멤버 데이터에 접근할 수 있음
       public:
@@ -40,14 +41,13 @@ namespace Records {
 
         bool isHired() const;
 
-
-    // 멤버 데이터를 private로 설정하여 외부에서 직접 접근하지 못하도록 함
+        // 멤버 데이터를 private로 설정하여 외부에서 직접 접근하지 못하도록 함
       private:
-        std::string m_firstName; // 직원 이름
-        std::string m_lastName;  // 직원 성
-        int m_employeeNumber{-1};   // 직원 번호
+        std::string m_firstName;             // 직원 이름
+        std::string m_lastName;              // 직원 성
+        int m_employeeNumber{-1};            // 직원 번호
         int m_salary{DefaultStartingSalary}; // 직원 급여
-        bool m_hired{false};               // 직원 채용 여부
+        bool m_hired{false};                 // 직원 채용 여부
     };
 
 } // namespace Records
