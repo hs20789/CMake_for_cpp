@@ -1,6 +1,11 @@
 ﻿#include <iostream>
 #include <print>
 
+// 이차원 배열을 동적으로 할당하는 함수
+char **allocateCharacterBoard(size_t xDemansion, size_t yDimension);
+// 이차원 동적 배열에 할당된 메모리를 해제하는 함수
+void releaseCharacterBoard(char **myArray, size_t xDimension);
+
 int main()
 {
     int *ptr1{nullptr};
@@ -66,9 +71,52 @@ int main()
                  "-----------------------\n";
     Simple *mySimpleArray1{new Simple[4]};
     std::cout
-        << "After delete[] "
+        << "After delete[] mySimpleArray1"
            "mySimpleArray1;\n------------------------------------------------"
            "-----------------------\n";
     delete[] mySimpleArray1;
     mySimpleArray1 = nullptr;
+
+    std::cout << "Pointer "
+                 "Array--------------------------------------------------------"
+                 "-------------\n";
+    // 포인터 배열
+    size_t const size1{4};
+    Simple **mySimpleArray2{new Simple *[size1]};
+
+    for (size_t i{}; i < size1; i++) {
+        mySimpleArray2[i] = new Simple{};
+    }
+    for (size_t i{0}; i < size1; i++) {
+        delete mySimpleArray2[i];
+        mySimpleArray2[i] = nullptr;
+    }
+    delete[] mySimpleArray2;
+    mySimpleArray2 = nullptr;
+    std::cout << "Pointer "
+                 "Array--------------------------------------------------------"
+                 "-------------\n\n\n";
+    // 다차원 프리스토어 배열
+    char **myArrayptr5{allocateCharacterBoard(4, 4)};
+    releaseCharacterBoard(myArrayptr5, 4);
+}
+
+// 이차원 배열을 동적으로 할당하는 함수
+char **allocateCharacterBoard(size_t xDimansion, size_t yDimension)
+{
+    char **myArray{new char *[xDimansion]};
+    for (size_t i{}; i < xDimansion; i++) {
+        myArray[i] = new char[yDimension];
+    }
+    return myArray;
+}
+// 이차원 동적 배열에 할당된 메모리를 해제하는 함수
+void releaseCharacterBoard(char **myArray, size_t xDimension)
+{
+    for (size_t i{}; i < xDimension; i++) {
+        delete[] myArray[i];
+        myArray[i] = nullptr;
+    }
+    delete[] myArray;
+    myArray = nullptr;
 }
