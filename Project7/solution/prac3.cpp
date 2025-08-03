@@ -27,6 +27,7 @@ class TriDimension
     double m_zValue{};
 };
 
+//// 1. new /delete
 // int main()
 // {
 //     TriDimension *triPtr{new TriDimension{3, 5, 1}};
@@ -35,8 +36,17 @@ class TriDimension
 //     triPtr = nullptr;
 // }
 
+//// 2. std::unique_ptr
 // int main()
 // {
 //     std::unique_ptr<TriDimension> triPtr{new TriDimension{1, 2, 3}};
 //     triPtr->getDimensionValue();
 // }
+
+// 3. std::make_unique
+int main()
+{
+    auto triPtr = std::make_unique<TriDimension>(1, 2, 3);
+    triPtr->getDimensionValue();
+}
+
