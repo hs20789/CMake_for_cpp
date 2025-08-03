@@ -35,7 +35,8 @@ void leaky()
 void couldBeLeaky()
 {
     Simple *mySimplePtr{new Simple{}};
-    // go() ¸Þ¼­µå¿¡¼­ ÀÍ¼Á¼Ç ¹ß»ý½Ã ´©¼ö ¹ß»ý
+    // go() ë©¤ë²„ í•¨ìˆ˜ì—ì„œ ì˜ˆì™¸ ë°œìƒ ì‹œ delete ë¬¸ì€ ì‹¤í–‰ë˜ì§€ ì•Šì•„ ëˆ„ìˆ˜ê°€
+    // ë°œìƒí•œë‹¤.
     mySimplePtr->go();
     delete mySimplePtr;
 }
@@ -43,6 +44,7 @@ void couldBeLeaky()
 void notLeaky1()
 {
     auto mySimpleSmartPtr{std::make_unique<Simple>()};
+    // std::unique_ptr<Simple> mySimpleSmartPtr{std::make_unique<Simple>()};
     mySimpleSmartPtr->go();
 }
 
