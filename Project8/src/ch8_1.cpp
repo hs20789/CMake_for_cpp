@@ -52,15 +52,13 @@ int main()
     std::print("smartPtr4: {} | {}\n", smartPtr4->getValue(),
                smartPtr4->getString());
 
-    auto smartPtr5{std::unique_ptr<SpreadsheetCell> {new SpreadsheetCell{490}}};
+    auto smartPtr5{std::unique_ptr<SpreadsheetCell>{new SpreadsheetCell{490}}};
     std::print("smartPtr5: {} | {}\n", smartPtr5->getValue(),
                smartPtr5->getString());
 
-
     SpreadsheetCell myCell4{"test"}, anotherCell4{4.4};
     auto smartPtr6{std::make_unique<SpreadsheetCell>("5.5")};
-    std::print("myCell4{{\"test\"}}: {}\nanotherCell4{{4.4}}: {}\nsmartPtr6: {}\n",
-               myCell4.getValue(), anotherCell4.getValue(),
-               smartPtr6->getValue());
-
+    std::print(
+        "myCell4{{\"test\"}}: {}\nanotherCell4{{4.4}}: {}\nsmartPtr6: {}\n",
+        myCell4.getValue(), anotherCell4.getValue(), smartPtr6->getValue());
 }

@@ -6,6 +6,7 @@
 #include <format>
 #include <iostream>
 #include <memory>
+#include <print>
 #include <string>
 #include <string_view>
 
@@ -20,7 +21,8 @@ class Person
   public:
     // 생성자
     Person(std::string_view first, std::string_view last)
-        : m_firstName{first}, m_lastName{last} {}
+        : m_firstName{first}, m_lastName{last}
+    {}
     Person() = default;
 
     // m_firstName 게터와 세터
@@ -76,6 +78,7 @@ int main()
     auto heapVar4{std::make_unique<Person>("John", "Smith")};
     std::cout << std::format("heapVar4: {} {}\n\n", heapVar4->getFirstName(),
                              heapVar4->getLastName());
+    std::print("HIHIHIHIHIH\n");
 }
 
 std::string Person::getFirstName() const { return m_firstName; }
