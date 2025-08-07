@@ -1,47 +1,33 @@
 ﻿#include <iostream>
-#include <string>
-#include <utility>
-#include <print>
+#include <vector>
 
-struct Logged
-{
-    Logged() { std::cout << "기본 생성자\n"; }
-    Logged(const Logged &) { std::cout << "복사 생성자\n"; }
-    ~Logged() { std::cout << "소멸자\n"; }
-};
+import Spreadsheet_ch9_test;
 
-Logged create_logged_object()
-{
-    Logged local_obj;
-    std::cout << "함수 내에서 객체 반환 직전\n";
-    return local_obj;
-}
+Spreadsheet createObject();
 
-
-
-void printStr(std::string &&str)
-{
-    str[0] = 'J';
-    std::cout << str << '\n';
-}
+using s = std::size_t;
 
 int main()
 {
-    std::cout << "함수 호출 시작\n";
-    Logged main_obj = create_logged_object();
-    std::cout << "함수 호출 완료\n";
+    std::vector<Spreadsheet> vec;
+    for (s i{}; i < 4; i++) {
+        std::cout << "Iteration " << i+1 << std::endl;
+        vec.push_back(Spreadsheet{100, 100});
+        std::cout << std::endl;
+    }
+    Spreadsheet s{2, 3};
+    s = createObject();
+
+    
+
+    Spreadsheet s2{3, 2};
+    s2 = s;
 
 
-    std::string str{"Hello~!"};
-    printStr(std::move(str));
-    std::cout << std::format("rvalue: {}\n", str);
+    std::cout << "============================================================="
+                 "=============\n\n";
 
-    int var1{11};
-    int var2{22};
-    std::print("Before exchange(): a = {}, b= {}\n", var1, var2);
-    int returnedValue{std::exchange(var1, var2)};
-    std::print("After exchange(): a = {}, b = {}\n", var1, var2);
-    std::print("exchange() returned: {}\n", returnedValue);
-
-    return 0;
+    Spreadsheet s3 = createObject();
 }
+
+Spreadsheet createObject() { return Spreadsheet{3, 2}; }

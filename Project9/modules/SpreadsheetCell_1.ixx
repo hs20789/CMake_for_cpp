@@ -32,9 +32,10 @@ export class SpreadsheetCell
     std::string getString() const;
 
   private:
-    std::string doubleToString(double value) const;
-    double stringToDouble(std::string_view inString) const;
     double m_value{};
+    //////////////////////// 헬퍼 함수 ////////////////////////
+    static std::string doubleToString(double value);
+    static double stringToDouble(std::string_view inString);
 };
 
 void SpreadsheetCell::setValue(double value) { m_value = value; }
@@ -49,11 +50,11 @@ std::string SpreadsheetCell::getString() const
     return doubleToString(this->m_value);
 }
 
-std::string SpreadsheetCell::doubleToString(double value) const
+std::string SpreadsheetCell::doubleToString(double value)
 {
     return std::to_string(value);
 }
-double SpreadsheetCell::stringToDouble(std::string_view value) const
+double SpreadsheetCell::stringToDouble(std::string_view value)
 {
     double number{};
     std::from_chars(value.data(), value.data() + value.size(), number);

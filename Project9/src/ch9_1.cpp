@@ -6,6 +6,7 @@
 
 import Spreadsheet_ch9_3;
 
+
 Spreadsheet createObject() { return Spreadsheet{3, 2}; }
 
 using s = std::size_t;
