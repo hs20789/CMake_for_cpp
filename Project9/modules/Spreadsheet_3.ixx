@@ -26,6 +26,7 @@ export class Spreadsheet
 
     void setCellAt(s x, s y, SpreadsheetCell cell);
     SpreadsheetCell &getCellAt(s x, s y);
+    SpreadsheetCell const &getCellAt(s x, s y) const;
     void swap(Spreadsheet &other) noexcept;
 
   private:

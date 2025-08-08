@@ -17,36 +17,39 @@ export class SpreadsheetCell
   public:
     // ctor
     SpreadsheetCell() = default;
-
     SpreadsheetCell(SpreadsheetCell const &src) = default;
-
     SpreadsheetCell(double initialValue) : m_value{initialValue} {};
-
     explicit SpreadsheetCell(std::string_view initialValue)
         : SpreadsheetCell{stringToDouble(initialValue)} {};
 
-    void setValue(double value);
+    void set(double value);
     double getValue() const;
 
-    void setString(std::string_view inString);
+    void set(std::string_view inString);
     std::string getString() const;
 
   private:
     double m_value{};
+    mutable size_t m_numAccesses{}; // 로깅 기록을 위한 변수
     //////////////////////// 헬퍼 함수 ////////////////////////
     static std::string doubleToString(double value);
     static double stringToDouble(std::string_view inString);
 };
 
-void SpreadsheetCell::setValue(double value) { m_value = value; }
-double SpreadsheetCell::getValue() const { return m_value; }
+void SpreadsheetCell::set(double value) { m_value = value; }
+double SpreadsheetCell::getValue() const
+{
+    m_numAccesses++;
+    return m_value;
+}
 
-void SpreadsheetCell::setString(std::string_view inString)
+void SpreadsheetCell::set(std::string_view inString)
 {
     this->m_value = stringToDouble(inString);
 }
 std::string SpreadsheetCell::getString() const
 {
+    m_numAccesses++;
     return doubleToString(this->m_value);
 }
 
