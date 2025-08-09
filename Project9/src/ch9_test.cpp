@@ -20,9 +20,18 @@ Noisy create_noisy_nrvo()
 {
     Noisy n;
     return n; // NRVO 대상
+
 }
+class TextHolder
+{
+  private:
+    std::string m_text;
 
-
+  public:
+    TextHolder(std::string text) : m_text{std::move(text)} {}
+    std::string const &getText() const & { return m_text; }
+    std::string &&getText() && { return std::move(m_text); }
+};
 int main()
 {
     // Spreadsheet s{Spreadsheet{2, 3}};

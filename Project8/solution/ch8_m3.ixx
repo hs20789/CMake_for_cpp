@@ -18,10 +18,12 @@ export class Person
     std::string m_lastName{"Default LastName"};
 
   public:
-    // 생성자
+    // 매개변수 생성자
     Person(std::string_view first, std::string_view last)
         : m_firstName{first}, m_lastName{last}
-    {}
+    {
+        std::cout << "Person parametered consturctor called." << std::endl;
+    }
     Person() = default;
     // 복제 생성자
     Person(const Person &src)
@@ -33,7 +35,7 @@ export class Person
     Person &operator=(Person const &rhs);
 
     // 소멸자
-    ~Person() { std::cout << "Destructor Called!\n"; }
+    ~Person() { std::cout << "Person destructor Called!\n"; }
 
     // m_firstName 게터와 세터
     std::string getFirstName() const;

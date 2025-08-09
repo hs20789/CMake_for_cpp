@@ -23,10 +23,10 @@ export class SpreadsheetCell
         : SpreadsheetCell{stringToDouble(initialValue)} {};
 
     void set(double value);
-    double getValue() const;
-
     void set(std::string_view inString);
+
     std::string getString() const;
+    double getValue() const;
 
   private:
     double m_value{};
@@ -37,15 +37,16 @@ export class SpreadsheetCell
 };
 
 void SpreadsheetCell::set(double value) { m_value = value; }
+void SpreadsheetCell::set(std::string_view inString)
+{
+    this->m_value = stringToDouble(inString);
+}
+
+
 double SpreadsheetCell::getValue() const
 {
     m_numAccesses++;
     return m_value;
-}
-
-void SpreadsheetCell::set(std::string_view inString)
-{
-    this->m_value = stringToDouble(inString);
 }
 std::string SpreadsheetCell::getString() const
 {

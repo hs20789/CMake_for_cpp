@@ -16,7 +16,7 @@ using s = size_t;
 export class Spreadsheet
 {
   public:
-    Spreadsheet() = delete;                            // 디폴트 생성자
+    Spreadsheet() = delete;                             // 디폴트 생성자
     Spreadsheet(s width, s height);                     // 매개변수 생성자
     Spreadsheet(Spreadsheet const &src);                // 복사 생성자 1/5
     Spreadsheet(Spreadsheet &&src) noexcept;            // 이동 생성자 2/5
@@ -132,7 +132,13 @@ void Spreadsheet::setCellAt(s x, s y, SpreadsheetCell cell)
     m_cells[x][y] = cell;
 }
 
+// this 포인터는 Spreadsheet 포인터
 SpreadsheetCell &Spreadsheet::getCellAt(s x, s y)
+{
+    return const_cast<SpreadsheetCell &>(std::as_const(*this).getCellAt(x, y));
+}
+// this 포인터는 Spreadsheet const 포인터
+SpreadsheetCell const &Spreadsheet::getCellAt(s x, s y) const
 {
     verifyCoordinate(x, y);
     return m_cells[x][y];
