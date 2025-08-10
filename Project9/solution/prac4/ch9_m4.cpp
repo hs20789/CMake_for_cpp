@@ -54,6 +54,7 @@ const string &Person::Impl::getInitials() const { return m_initials; }
 void Person::Impl::setInitials(string initials) { m_initials = move(initials); }
 
 // Person class method definitions.
+// 인터페이스 클래스
 
 Person::Person(string firstName, string lastName)
     : m_impl{make_unique<Impl>(move(firstName), move(lastName))}
@@ -65,13 +66,13 @@ Person::Person(string firstName, string lastName, string initials)
 
 Person::Person() : m_impl{make_unique<Impl>()} {}
 
-Person::~Person() = default;
-Person::Person(Person &&) noexcept = default;
-Person &Person::operator=(Person &&) noexcept = default;
-
-Person::Person(const Person &src) : m_impl{make_unique<Impl>(*src.m_impl)} {}
-
-Person &Person::operator=(const Person &rhs)
+Person::~Person() = default;                             // 소멸자 1/5
+Person::Person(Person &&) noexcept = default;            // 이동 생성자 2/5
+Person &Person::operator=(Person &&) noexcept = default; // 이동 대입 연산자 3/5
+Person::Person(const Person &src)                        // 복사 생성자 4/5
+    : m_impl{make_unique<Impl>(*src.m_impl)}
+{}
+Person &Person::operator=(const Person &rhs) // 복사 대입 연산자 5/5
 {
     *m_impl = *rhs.m_impl;
     return *this;

@@ -1,0 +1,1 @@
+﻿add_executable(ch10_1 "src/ch10_1.cpp")
