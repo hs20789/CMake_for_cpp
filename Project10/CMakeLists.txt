@@ -20,3 +20,6 @@ endif()
 
 # 10-4 다중 상속
 add_executable(ch10_4 "src/ch10_4.cpp")
+
+# 10-5 상속과 관련되 흥미로운 문제들
+add_executable(ch10_5 "src/ch10_5.cpp")
