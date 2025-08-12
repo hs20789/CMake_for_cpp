@@ -46,5 +46,6 @@ void MyWeatherPrediction::showResult() const
 
 std::string MyWeatherPrediction::getTemperature() const
 {
-    return getTemperature() + "\u00B0F";
+    // 참고: \u00B0은 ISO/IEC 10646 표준의 온도 기호다.
+    return WeatherPrediction::getTemperature() + "\u00B0F";
 }

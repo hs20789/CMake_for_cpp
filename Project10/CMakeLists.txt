@@ -8,3 +8,15 @@ if(MSVC)
     "modules/WeatherPrediction.ixx"
     "modules/MyWeatherPrediction.ixx")
 endif()
+
+# 10-3 다형성을 위한 상속 - 모듈 사용 => MSVC 전용
+if(MSVC)
+    add_executable(ch10_3 "src/ch10_3.cpp")
+    target_sources(ch10_3 PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES 
+    "modules/SpreadsheetCell_ch10.ixx"
+    "modules/StringSpreadsheetCell_ch10.ixx"
+    "modules/DoubleSpreadsheetCell_ch10.ixx")
+endif()
+
+# 10-4 다중 상속
+add_executable(ch10_4 "src/ch10_4.cpp")
