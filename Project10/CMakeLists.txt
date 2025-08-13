@@ -23,3 +23,6 @@ add_executable(ch10_4 "src/ch10_4.cpp")
 
 # 10-5 상속과 관련되 흥미로운 문제들
 add_executable(ch10_5 "src/ch10_5.cpp")
+
+# 10-6 RTTI, 캐스트
+add_executable(ch10_6 "src/ch10_6.cpp")
