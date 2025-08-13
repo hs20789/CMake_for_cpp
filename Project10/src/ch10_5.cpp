@@ -8,14 +8,21 @@ class Base
     Base() { std::cout << "Base's Default ctor\n"; };
     Base(std::string_view str) { std::cout << "Base's string_view ctor\n"; };
     Base(float f) { std::cout << "Base's float ctor\n"; }
+    Base(Base const &src) {}
+
     virtual void someMethod() {};
     virtual void overload() { std::cout << "Base's overload()\n"; }
     virtual void overload(int i) { std::cout << "Base's overload(int i)\n"; }
+    virtual void go(int i = 2)
+    {
+        std::cout << "Base's go with i=" << i << std ::endl;
+    }
 };
 
 class Derived : public Base
 {
   public:
+    Derived(Derived const &src) : Base{src} {}
     using Base::overload;
     Derived(int i) { std::cout << "Derived's int ctor\n"; };
     using Base::Base;
@@ -24,6 +31,10 @@ class Derived : public Base
     virtual void someMethod(int i) {}; // 새 버전을 추가
     virtual void someOtherMethod() {};
     virtual void overload() override { std::cout << "Derived's overload()\n"; }
+    void go(int i = 7) override
+    {
+        std::cout << "Derived's go with i=" << i << std::endl;
+    }
 };
 
 class Base1
@@ -82,6 +93,32 @@ class EfficientCarMilesEstimator : public MilesEstimator
     int getMilstPerGallone() const override { return 35; }
 };
 
+class Gregarious
+{
+  public:
+    virtual void talk() { std::cout << "Gregarious says hi!\n"; }
+    virtual void talk2() { std::cout << "TIME\n"; }
+};
+
+class Shy : public Gregarious
+{
+  private:
+    void talk() override { std::cout << "Shy reluctantly says hello.\n"; }
+    using Gregarious::talk2;
+};
+
+class Secret
+{
+  protected:
+    virtual void dontTell() { std::cout << "T'll nevet rell.\n"; }
+};
+
+class Blabber : public Secret
+{
+  public:
+    using Secret::dontTell;
+};
+
 int main()
 {
     Base base1{};
@@ -121,5 +158,25 @@ int main()
     myEstimator.setGallonsLeft(2);
     std::cout << std::format("Efficient estiamtor can go {} more miles.\n",
                              myEstimator.getMilesLeft());
+    std::cout << "============================\n";
+    Base base3;
+    Derived derived8;
+    base3.go();
+    derived8.go();
+    std::cout << "============================\n";
+    Base *ptr{new Derived{}};
+    ptr->go();
+    std::cout << "============================\n";
+    Shy myShy;
+    Gregarious &ref3{myShy};
+    ref3.talk();
+    Gregarious *ptr2{&myShy};
+    ptr2->talk();
+    std::cout << "============================\n";
+    ptr2->talk2();
+    std::cout << "============================\n";
+    Blabber myBlabber;
+    myBlabber.dontTell();
+
     std::cout << "============================\n";
 }
