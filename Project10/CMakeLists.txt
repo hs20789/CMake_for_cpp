@@ -29,14 +29,14 @@ add_executable(ch10_6 "src/ch10_6.cpp")
 
 ###################################################################################
 
-## 연습문제 1~3. - 모듈 사용 => MSVC 전용
+## 연습문제 1~4. - 모듈 사용 => MSVC 전용
 if(MSVC)
-    add_executable(ch10_prac "solution/prac1/ch10_prac.cpp")
+    add_executable(ch10_prac "solution/prac/ch10_prac.cpp")
     target_sources(ch10_prac PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES 
-    "solution/prac1/Person_ch10_prac.ixx"
-    "solution/prac1/Employee_ch10_prac.ixx"
-    "solution/prac1/Manager_ch10_prac.ixx"
-    "solution/prac1/HR_ch10_prac.ixx"
-    "solution/prac1/Director_ch10_prac.ixx")
+    "solution/prac/Person_ch10_prac.ixx"
+    "solution/prac/Employee_ch10_prac.ixx"
+    "solution/prac/Manager_ch10_prac.ixx"
+    "solution/prac/HR_ch10_prac.ixx"
+    "solution/prac/Director_ch10_prac.ixx")
 endif()
 
