@@ -1,3 +1,4 @@
+#include <format>
 #include <iostream>
 #include <iterator>
 #include <vector>
@@ -58,5 +59,15 @@ int main()
     } else {
         std::cout << "Found value at position "
                   << std::distance(std::cbegin(values2), result) << std::endl;
+    }
+
+    auto it1{myFind(std::begin(values2), std::end(values2), 22)};
+    auto it2{myFind(std::rbegin(values2), std::rend(values2), 22)};
+    if (it1 != std::end(values2) && it2 != std::rend(values2)) {
+        std::cout << std::format("Found at position {} going forward.\n",
+                                 std::distance(std::begin(values2), it1));
+        std::cout << std::format(
+            "Found at position {} going backward.\n",
+            std::distance(std::begin(values2), --it2.base()));
     }
 }
