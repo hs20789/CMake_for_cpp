@@ -70,7 +70,7 @@ int main()
             std::views::transform(
                 [](auto const &person) { return person.getLastName(); }));
         myCopy(std::begin(fourPersons), std::end(fourPersons),
-               std::ostream_iterator<std::string>{std::cout, "\n"});
+               std::ostream_iterator<std::string>{std::cout, "||"});
     }
 
     {
