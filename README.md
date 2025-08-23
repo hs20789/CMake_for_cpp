@@ -1,7 +1,7 @@
 ---
 
 <p align="center">
-  <img alt="C++" src="https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.svg" height="60">
+  <img alt="C++" src="https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.svg" height="100">
   &nbsp;&nbsp;
 </p>
 
