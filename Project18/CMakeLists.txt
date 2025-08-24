@@ -25,3 +25,11 @@ add_executable(ch18_12 "src/ch18_12.cpp")
 add_executable(ch18_13 "src/ch18_13.cpp")
 
 add_executable(ch18_14 "src/ch18_14.cpp")
+
+add_executable(ch18_15 "src/ch18_15.cpp")
+
+add_executable(ch18_16 "src/ch18_16.cpp")
+
+add_executable(ch18_17 "src/ch18_17.cpp")
+
+add_executable(ch18_18 "src/ch18_18.cpp")
