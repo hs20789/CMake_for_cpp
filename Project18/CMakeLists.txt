@@ -56,3 +56,6 @@ endif()
 
 # 연습문제 3.
 add_executable(ch18_prac3 "solution/prac3/ch18_prac3.cpp")
+
+# 연습문제 4.
+add_executable(ch18_prac4 "solution/prac4/ch18_prac4.cpp")
