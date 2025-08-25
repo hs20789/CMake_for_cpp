@@ -53,3 +53,6 @@ if (MSVC)
 	add_executable(ch18_prac2 "solution/prac2/ch18_prac2.cpp")
 	target_link_libraries(ch18_prac2 PRIVATE ch18_m2)
 endif()
+
+# 연습문제 3.
+add_executable(ch18_prac3 "solution/prac3/ch18_prac3.cpp")
