@@ -9,10 +9,12 @@ add_executable(ch19_4 "src/ch19_4.cpp")
 
 add_executable(ch19_5 "src/ch19_5.cpp")
 
-add_executable(ch19_6 "src/ch19_6.cpp")
+add_executable(ch19_prac1 "solution/ch19_prac1.cpp")
 
-add_executable(ch19_7 "src/ch19_7.cpp")
+add_executable(ch19_prac2 "solution/ch19_prac2.cpp")
 
-add_executable(ch19_8 "src/ch19_8.cpp")
+add_executable(ch19_prac3 "solution/ch19_prac3.cpp")
 
-add_executable(ch19_9 "src/ch19_9.cpp")
+add_executable(ch19_prac4 "solution/ch19_prac4.cpp")
+
+add_executable(ch19_prac5 "solution/ch19_prac5.cpp")

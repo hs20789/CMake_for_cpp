@@ -41,12 +41,15 @@ int main()
 
     std::vector values1{2, 500, 6, 9, 10, 101, 1};
     std::vector values2{4, 4, 2, 9, 0, 300, 1};
+
+    findMatches(values1, values2, IsLargerThan{100}, printMatch);
 }
 
 void findMatches(std::span<int const> values1, std::span<int const> values2,
                  auto matcher, auto handler)
 {
     if (values1.size() != values2.size()) {
+        std::cout << "They must have same len!\n";
         return;
     }
     for (size_t i{}; i < values1.size(); ++i) {
