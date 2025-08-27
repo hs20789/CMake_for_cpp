@@ -48,7 +48,7 @@ int main()
     std::cin >> tally;
 
     vec4.resize(tally);
-    tally = std::min(tally, std::size(vec4));
+    tally = std::min(tally, std::size(vec3));
     std::copy_n(std::cbegin(vec3), tally, std::begin(vec4));
     std::cout << "Vector4:" << std::endl;
     printContainer(vec4);
