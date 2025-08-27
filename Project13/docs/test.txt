@@ -1,0 +1,10 @@
+There were 8 arguments to this program.
+They are: 
+./../out/build/linux-debug/Project13/ch13_6
+This
+is
+cpp
+project
+using
+CMAKE
+TOOLS!

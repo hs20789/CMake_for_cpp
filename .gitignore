@@ -11,6 +11,7 @@ ehthumbs.db
 *~
 *.swp
 *.swo
+cli.txt
 
 # macOS (혹시 macOS에서도 작업할 경우)
 .DS_Store
