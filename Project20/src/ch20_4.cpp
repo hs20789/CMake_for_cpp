@@ -58,7 +58,7 @@ int main()
                               ++callCounter;
                               return i > value;
                           });
-    std::cout << "The lambda expression was calledd " << callCounter
+    std::cout << "The lambda expression was called " << callCounter
               << " times.\n";
     std::cout << std::format("Found {} values > {}.\n", tally, value);
 }
