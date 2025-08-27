@@ -54,4 +54,34 @@ int main()
                    std::begin(myVector), [&num](int i) { return i + num; });
     std::cout << "The vector contains: " << std::endl;
     printContainer(myVector);
+
+    std::vector<int> vec1, vec2;
+    std::cout << "Vector1: " << std::endl;
+    populateContainer(vec1);
+    std::cout << "Vector2: " << std::endl;
+    populateContainer(vec2);
+
+    if (vec2.size() < vec1.size()) {
+        std::cout << "Vector2 should be at least the same size as vector1.\n";
+        return 1;
+    }
+    std::cout << "Vector1: ";
+    printContainer(vec1);
+    std::cout << "Vector2: ";
+    printContainer(vec2);
+
+    std::transform(std::begin(vec1), std::end(vec1), std::begin(vec2),
+                   std::begin(vec1), [](int a, int b) { return a + b; });
+
+    std::cout << "Vector1: ";
+    printContainer(vec1);
+    std::cout << "Vector2: ";
+    printContainer(vec2);
+
+    std::vector<int> vec3, vec4;
+    populateContainer(vec3);
+    vec4.resize(std::size(vec3));
+    std::copy(std::cbegin(vec3), std::cend(vec3), std::begin(vec4));
+    printContainer(vec3);
+    printContainer(vec4);
 }
