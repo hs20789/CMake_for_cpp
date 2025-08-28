@@ -1,40 +1,32 @@
-#include <algorithm>
-#include <functional>
+#include <cctype>
+#include <format>
 #include <iostream>
-#include <vector>
+#include <string>
+#include <string_view>
+
+using namespace std;
+
+string trim(string_view text)
+{
+    auto firstNonWhitespace{
+        find_if(begin(text), end(text), [](char c) { return !isspace(c); })};
+
+    // Remember from Chapter 17, to obtain the underlying iterator from a
+    // reverse_iterator, you need to call the base() method on the
+    // reverse_iterator.
+    auto onePassedLastNonWhitespace{
+        find_if(rbegin(text), rend(text), [](char c) {
+            return !isspace(c);
+        }).base()};
+
+    return {firstNonWhitespace, onePassedLastNonWhitespace};
+}
 
 int main()
 {
-    std::vector<int> myVector;
-    while (true) {
-        std::cout << "Enter a number to add (0 to stop): ";
-        int number;
-        std::cin >> number;
-        if (number == 0)
-            break;
-        myVector.emplace_back(number);
-    }
-    while (true) {
-        std::cout << "Enter a number to lookup (0 to stop): ";
-        int number;
-        std::cin >> number;
-        if (number == 0) {
-            break;
-        }
-        auto endIt{std::cend(myVector)};
-        if (auto it{std::find(std::cbegin(myVector), endIt, number)};
-            it == endIt) {
-            std::cout << "Could not find " << number << std::endl;
-        } else {
-            std::cout << "Found " << *it << std::endl;
-        }
-    }
-    auto pred1{[](int num) { return num >= 100; }};
-    auto endIt{std::cend(myVector)};
-    if (auto it{std::find_if(std::cbegin(myVector), endIt, pred1)};
-        it == endIt) {
-        std::cout << "No perfect Scores!! Try Again!" << std::endl;
-    } else {
-        std::cout << "You have a perfect Scores! Good Job! Bye~" << std::endl;
-    }
+    cout << format("'{}'\n", trim("   Hello World!   "));
+    cout << format("'{}'\n", trim("Hello World!   "));
+    cout << format("'{}'\n", trim("   Hello World!"));
+    cout << format("'{}'\n", trim("Hello World!"));
+    cout << format("'{}'\n", trim(" \t Hello World! \n"));
 }
