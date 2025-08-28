@@ -11,7 +11,4 @@ int main()
 
     wchar_t myWideCharacter{L'm'};
     std::wcout << L"I am a wide-character string literal." << std::endl;
-
-    std::wcout.imbue(std::locale{"en_US"});
-    std::wcout << 32767 << std::endl;
 }
