@@ -1,5 +1,5 @@
 # 실행 파일
-foreach(num RANGE 1 6)
+foreach(num RANGE 1 2)
     add_executable(ch24_${num} "src/ch24_${num}.cpp")
 endforeach()
 
