@@ -1,5 +1,5 @@
-﻿if(CMAKE_CXX_COMPILE_ID STREQUAL "GNU")
-	set(CMAKE_BUILD_TYPE Debug)
+﻿if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND NOT CMAKE_BUILD_TYPE)
+	set(CMAKE_BUILD_TYPE Debug CACHE STRING "Default build type for GNU" FORCE)
 endif()
 
 ## ch07의 첫 번째 실행 파일

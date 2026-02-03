@@ -1,9 +1,6 @@
 # CMakeList.txt: Project1에 대한 CMake 프로젝트, 여기에 소스를 포함하고
 # 프로젝트 특정 논리를 정의합니다.
 #
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 if(MSVC)
     add_compile_options(/EHsc)
 endif()
@@ -129,7 +126,9 @@ endif()
 
 # 헤더 파일 검색 경로를 지정합니다.
 target_include_directories(pro1 PUBLIC include)
-target_include_directories(p1c1d1 PUBLIC include)
+if(TARGET p1c1d1)
+    target_include_directories(p1c1d1 PUBLIC include)
+endif()
 target_include_directories(p1c1d2 PUBLIC include)
 
 
